@@ -1,0 +1,13 @@
+import css external
+import javascript code
+dom example
+innerHTML shto rresht tabele
+real time function
+getelementbyclassname is an array
+dom content loaded function to work
+fshish femijet
+
+
+
+
+
