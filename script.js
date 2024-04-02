@@ -1,16 +1,16 @@
 var nr_fature = 1;
 let currentDate = new Date();
-    var day = currentDate.getDate().toString().padStart(2, '0'); //mbush strin me 0 deri sa te arrije 2 vlera
-    var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); //muajte fillojne numerimin nga zero
-    var year = currentDate.getFullYear();
-    var hours = currentDate.getHours().toString().padStart(2, '0');
-    var minutes = currentDate.getMinutes().toString().padStart(2, '0');
-    var formattedDateTime = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
+var day = currentDate.getDate().toString().padStart(2, '0'); //mbush strin me 0 deri sa te arrije 2 vlera
+var month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); //muajte fillojne numerimin nga zero
+var year = currentDate.getFullYear();
+var hours = currentDate.getHours().toString().padStart(2, '0');
+var minutes = currentDate.getMinutes().toString().padStart(2, '0');
+var formattedDateTime = day + '/' + month + '/' + year + ' ' + hours + ':' + minutes;
 var totali_produktit_fatura = 0;
 var emri_klientit;
 
 //vendosen eventlisteners pas load
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Listen for input events on all elements with class name 'sasia_produktit'
     let sasiaInputs = document.getElementsByClassName("sasia_produktit");
     for (let i = 0; i < sasiaInputs.length; i++) {
@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 //funksioni on load
-function load(){
+function load() {
     document.getElementById("datetime").innerText = formattedDateTime;
 }
 
 //fshi duhet te fshije te gjithe <tr> aktual
-function fshi_rresht(button){
+function fshi_rresht(button) {
     var rreshti_prind = button.parentNode.parentNode;
     rreshti_prind.parentNode.removeChild(rreshti_prind);
 
@@ -79,12 +79,12 @@ function vlera_produktit() {
 }
 
 //totali duhet te jete shuma e gjithe vlerave real time
-function totali_produktit(){
+function totali_produktit() {
     let totali = 0;
     let vleraSpans = document.getElementsByClassName("vlera_produktit");
 
     for (let i = 0; i < vleraSpans.length; i++) {
-        let vlera =  parseFloat(vleraSpans[i].innerText); //merr tektin sepse value kan vetem inputet
+        let vlera = parseFloat(vleraSpans[i].innerText); //merr tektin sepse value kan vetem inputet
         totali += vlera;
     }
 
@@ -105,7 +105,7 @@ function gjenero_fature() {
 
     var table = document.getElementById('tabela');
     var columns = [];
-    for (var i = 0; i < table.rows[0].cells.length -1; i++) {
+    for (var i = 0; i < table.rows[0].cells.length - 1; i++) {
         columns.push(table.rows[0].cells[i].textContent);
     }
     var rows = [];
@@ -125,13 +125,13 @@ function gjenero_fature() {
         row.push(lastColumnText);
         rows.push(row);
     }
-    
+
     // Add the table to the PDF
     doc.autoTable({
         head: [columns],
         body: rows,
-        startX : 10,
-        startY : 40
+        startX: 10,
+        startY: 40
     });
 
     doc.text('Totali: ' + totali_produktit_fatura, 10, doc.autoTable.previous.finalY + 10);
@@ -140,5 +140,3 @@ function gjenero_fature() {
     doc.save('Fatura_' + parseInt(nr_fature) + '.pdf');
     nr_fature++;
 }
-
-
