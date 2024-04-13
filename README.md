@@ -6,7 +6,7 @@
                  items purchased, and prices, then creates a professional-
                  looking invoice in PDF format.
 
-                 <ul>
+  <ul>
                   <li>Allows users to input client details, item descriptions, quantities, and prices easily.</li>
                   <li>Automatically generates professional-looking invoices in PDF format.</li>
                   <li>Can be accessed and used from any device with internet access </li>
